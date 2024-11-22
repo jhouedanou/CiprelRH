@@ -1,25 +1,20 @@
-import { writeFile, readFile } from 'fs/promises'
+import { writeFile, appendFile } from 'fs/promises'
 import { resolve } from 'path'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const filePath = resolve('./public/data/results.json')
+  const filePath = resolve('./public/data/results.csv')
 
   try {
-    // Lire les données existantes
-    let results = []
+    const csvLine = `${body.id},${body.date},${body.userData?.nom || ''},${body.userData?.prenom || ''},${body.userData?.email || ''},${body.userData?.contact || ''},${body.results.departement},${body.results.scores.forceCollective},${body.results.scores.equite},${body.results.scores.engagement},${body.results.scores.respect},${body.results.scores.innovation},${body.results.scores.convivialite}\n`
+
+    // Créer l'en-tête si le fichier n'existe pas
     try {
-      const data = await readFile(filePath, 'utf-8')
-      results = JSON.parse(data)
+      await appendFile(filePath, csvLine)
     } catch {
-      results = []
+      const header = 'ID,Date,Nom,Prénom,Email,Contact,Département,Force Collective,Équité,Engagement,Respect,Innovation,Convivialité\n'
+      await writeFile(filePath, header + csvLine)
     }
-
-    // Ajouter le nouveau résultat
-    results.push(body)
-
-    // Sauvegarder le fichier
-    await writeFile(filePath, JSON.stringify(results, null, 2))
 
     return { success: true, id: body.id }
   } catch (error) {

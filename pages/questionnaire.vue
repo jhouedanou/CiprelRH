@@ -21,7 +21,8 @@
                             <label class="block mb-1">Contact</label>
                             <input v-model="formData.contact" type="tel" required class="w-full border p-2 rounded" />
                         </div>
-                        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                        <button type="submit"
+                            class="w-full bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600">
                             Commencer le questionnaire
                         </button>
                     </form>
@@ -35,7 +36,7 @@
                             Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="bg-blue-500 h-2 rounded-full"
+                            <div class="bg-orange-500 h-2 rounded-full"
                                 :style="{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }"></div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                                 Précédent
                             </button>
                             <button @click="nextQuestion" :disabled="!currentAnswer"
-                                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
                                 {{ isLastQuestion ? 'Terminer' : 'Suivant' }}
                             </button>
                         </div>

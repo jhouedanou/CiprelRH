@@ -6,11 +6,11 @@
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-sm font-medium text-gray-600">Question {{ currentIndex + 1 }}/{{
                             questions.length }}</span>
-                        <span class="text-sm font-medium text-blue-600">{{ Math.round(((currentIndex + 1) /
+                        <span class="text-sm font-medium text-orange-600">{{ Math.round(((currentIndex + 1) /
                             questions.length) * 100) }}%</span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                        <div class="bg-orange-500h-2 rounded-full transition-all duration-300"
                             :style="{ width: `${((currentIndex + 1) / questions.length) * 100}%` }"></div>
                     </div>
                 </div>
@@ -20,26 +20,26 @@
 
                     <div class="space-y-4">
                         <label
-                            class="block p-4 border rounded-lg cursor-pointer transition-all hover:bg-blue-50 hover:border-blue-200"
-                            :class="{ 'bg-blue-50 border-blue-300': selectedAnswer === 'A' }">
+                            class="block p-4 border rounded-lg cursor-pointer transition-all hover:bg-orange-50 hover:border-orange-200"
+                            :class="{ 'bg-orange-50 border-orange-300': selectedAnswer === 'A' }">
                             <input type="radio" v-model="selectedAnswer" value="A" class="sr-only">
                             <div class="flex items-center">
                                 <div class="w-5 h-5 border-2 rounded-full mr-3 flex items-center justify-center"
-                                    :class="{ 'border-blue-500': selectedAnswer === 'A' }">
-                                    <div v-if="selectedAnswer === 'A'" class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                    :class="{ 'border-orange-500': selectedAnswer === 'A' }">
+                                    <div v-if="selectedAnswer === 'A'" class="w-3 h-3 bg-orange-500 rounded-full"></div>
                                 </div>
                                 <span class="text-gray-700">{{ currentQuestion.optionA }}</span>
                             </div>
                         </label>
 
                         <label
-                            class="block p-4 border rounded-lg cursor-pointer transition-all hover:bg-blue-50 hover:border-blue-200"
-                            :class="{ 'bg-blue-50 border-blue-300': selectedAnswer === 'B' }">
+                            class="block p-4 border rounded-lg cursor-pointer transition-all hover:bg-orange-50 hover:border-orange-200"
+                            :class="{ 'bg-orange-50 border-orange-300': selectedAnswer === 'B' }">
                             <input type="radio" v-model="selectedAnswer" value="B" class="sr-only">
                             <div class="flex items-center">
                                 <div class="w-5 h-5 border-2 rounded-full mr-3 flex items-center justify-center"
-                                    :class="{ 'border-blue-500': selectedAnswer === 'B' }">
-                                    <div v-if="selectedAnswer === 'B'" class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                    :class="{ 'border-orange-500': selectedAnswer === 'B' }">
+                                    <div v-if="selectedAnswer === 'B'" class="w-3 h-3 bg-orange-500 rounded-full"></div>
                                 </div>
                                 <span class="text-gray-700">{{ currentQuestion.optionB }}</span>
                             </div>
@@ -52,7 +52,7 @@
                             Précédent
                         </button>
                         <button @click="nextQuestion" :disabled="!selectedAnswer"
-                            class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                            class="px-6 py-2 bg-orange-500text-white rounded-md hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
                             {{ isLastQuestion ? 'Terminer' : 'Suivant' }}
                         </button>
                     </div>

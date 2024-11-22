@@ -137,16 +137,16 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
         secondaires: ['convivialite']
       },
       'Production': {
-        prioritaires: ['engagement', 'innovation'],
-        secondaires: ['respect', 'forceCollective']
+        prioritaires: ['engagement', 'innovation', 'respect'],
+        secondaires: ['forceCollective']
       },
       'Maintenance': {
-        prioritaires: ['engagement', 'forceCollective'],
-        secondaires: ['respect', 'innovation']
+        prioritaires: ['engagement', 'forceCollective', 'respect'],
+        secondaires: ['innovation']
       },
       'Qualité': {
-        prioritaires: ['equite', 'respect'],
-        secondaires: ['engagement', 'convivialite']
+        prioritaires: ['equite', 'respect', 'engagement'],
+        secondaires: ['convivialite']
       },
       'Comptabilité': {
         prioritaires: ['equite', 'respect'],

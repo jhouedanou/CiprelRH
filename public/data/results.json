@@ -194,5 +194,72 @@
         }
       ]
     }
+  },
+  {
+    "id": 1732263926373,
+    "date": "2024-11-22T08:25:26.373Z",
+    "userData": {
+      "nom": "Houedanou",
+      "prenom": "Jean Luc",
+      "email": "jeanluc@bigfiveabidjan.com",
+      "contact": "074834821"
+    },
+    "answers": {
+      "1": "B",
+      "2": "A",
+      "3": "A",
+      "4": "A",
+      "5": "A",
+      "6": "A",
+      "7": "B",
+      "8": "B",
+      "9": "A",
+      "10": "A",
+      "11": "B",
+      "12": "B",
+      "13": "B",
+      "14": "B",
+      "15": "B",
+      "16": "B",
+      "17": "B",
+      "18": "B"
+    },
+    "results": {
+      "scores": {
+        "forceCollective": 4,
+        "equite": 4,
+        "engagement": 5,
+        "respect": 3,
+        "innovation": 5,
+        "convivialite": 4
+      },
+      "departement": "Production",
+      "softSkillsTriees": [
+        {
+          "skill": "engagement",
+          "score": 5
+        },
+        {
+          "skill": "innovation",
+          "score": 5
+        },
+        {
+          "skill": "forceCollective",
+          "score": 4
+        },
+        {
+          "skill": "equite",
+          "score": 4
+        },
+        {
+          "skill": "convivialite",
+          "score": 4
+        },
+        {
+          "skill": "respect",
+          "score": 3
+        }
+      ]
+    }
   }
 ]

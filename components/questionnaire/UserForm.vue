@@ -7,25 +7,25 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
                         <input v-model="formData.nom" type="text" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
                         <input v-model="formData.prenom" type="text" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                         <input v-model="formData.email" type="email" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Contact</label>
                         <input v-model="formData.contact" type="tel" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
                     </div>
                     <button type="submit"
-                        class="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                        class="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
                         Continuer
                     </button>
                 </form>
