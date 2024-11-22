@@ -1,75 +1,20 @@
-# Nuxt Minimal Starter
+# CiprelRH - Questionnaire d'Orientation Professionnelle
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Application web interactive permettant d'évaluer les soft skills et de recommander un département adapté au profil du participant.
 
-## Setup
+## Fonctionnalités
 
-Make sure to install dependencies:
+- Questionnaire interactif de 18 questions
+- Évaluation des soft skills clés
+- Recommandation de département
+- Capture d'écran et partage des résultats
+- Animations et transitions fluides
+- Interface responsive
 
-```bash
-# npm
-npm install
+## Prérequis
 
-# pnpm
-pnpm install
+- Node.js 16+
+- NPM ou Yarn
+- Serveur SMTP pour l'envoi des résultats par email
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Installation
