@@ -108,12 +108,17 @@
                         Télécharger CSV
                     </button> -->
                     <button @click="shareScreenshot"
-                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
+                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
                         Partager mon évaluation
                     </button>
                     <button @click="captureScreen"
-                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
+                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
                         Télécharger mon évaluation
+                    </button>
+
+                    <button @click="retournerAccueil"
+                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
+                        cliquez ici pour retourner à l'accueil
                     </button>
                 </div>
             </div>
@@ -128,7 +133,12 @@ import html2canvas from 'html2canvas'
 
 const store = useQuestionnaireStore()
 const results = computed(() => store.calculateResults())
-const maxScore = 10 // Ajustez selon votre échelle
+const maxScore = 10
+const retournerAccueil = () => {
+    navigateTo('/')
+    store.resetQuestionnaire()
+    store.resetResults()
+}
 const captureScreen = async () => {
     const element = document.getElementById('capture-zone')
     if (element) {

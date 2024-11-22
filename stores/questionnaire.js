@@ -194,6 +194,25 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
   }),
 
   actions: {
+
+    async preloadImages() {
+      const imagePromises = this.questions.flatMap(question => [
+        new Promise((resolve) => {
+          const img = new Image()
+          img.onload = resolve
+          img.src = question.imageA
+        }),
+        new Promise((resolve) => {
+          const img = new Image()
+          img.onload = resolve
+          img.src = question.imageB
+        })
+      ])
+      
+      await Promise.all(imagePromises)
+      this.isLoading = false
+    },
+
     async saveResults() {
       const resultData = {
         id: Date.now(),

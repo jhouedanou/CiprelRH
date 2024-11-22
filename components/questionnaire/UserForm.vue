@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 m-4">
         <div class="max-w-xl mx-auto">
             <div class="bg-white rounded-2xl shadow-xl p-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Informations personnelles</h2>
@@ -47,5 +47,6 @@ const emit = defineEmits(['submit'])
 
 const submitForm = () => {
     emit('submit', formData.value)
-}
+};
 </script>
+<style></style>
