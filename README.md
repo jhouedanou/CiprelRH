@@ -14,7 +14,4 @@ Application web interactive permettant d'évaluer les soft skills et de recomman
 ## Prérequis
 
 - Node.js 16+
-- NPM ou Yarn
-- Serveur SMTP pour l'envoi des résultats par email
-
-## Installation
+- Yarn
