@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       failOnError: false
     }
   },
+  ssr: false,
   image: {
     quality: 80,
     format: ['webp', 'jpg']
