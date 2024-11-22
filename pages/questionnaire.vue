@@ -49,7 +49,7 @@
             <template v-else>
                 <transition name="slide">
                     <div class="h-screen flex flex-col">
-                        <div id="sabidi" class="flex-1 grid grid-cols-2 gap-2 p-2">
+                        <div id="sabidi" class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
                             <button @click="selectAnswer('A')"
                                 class="w-full h-full rounded-lg shadow hover:opacity-90 transition relative overflow-hidden"
                                 :style="{ backgroundImage: `url(${currentQuestion.imageA})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
