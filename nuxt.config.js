@@ -4,5 +4,16 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
-  ]
+  ],
+  nitro: {
+    preset: 'vercel',
+    prerender: {
+      failOnError: false
+    },
+  },  nitro: {
+    preset: 'vercel',
+    prerender: {
+      failOnError: false
+    },
+  }
 })
