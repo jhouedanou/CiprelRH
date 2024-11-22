@@ -7,11 +7,26 @@
         </nuxt-link>
       </div>
     </nav>
-    <main class="container mx-auto p-4">
+    <main class="p-0">
       <NuxtPage />
     </main>
   </div>
 </template>
+<script>
+import { useHead } from '#app';
+
+useHead({
+  title: 'CiprelRH',
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'description', content: 'Questionnaire d\'orientation professionnelle CiprelRH' },
+    { name: 'theme-color', content: '#ed7f04' }
+  ],
+  link: [
+    { rel: 'icon', type: 'image/png', href: '/icons/ios/192.png' }
+  ]
+});
+</script>
 <style>
 #main {
   background: url(images/02.webp) no-repeat center center fixed;

@@ -1,6 +1,6 @@
 <template>
-    <div class="container mx-auto p-4">
-        <div class="max-w-2xl mx-auto">
+    <div class="w-full h-screen flex items-center justify-center bg-gray-100">
+        <div class="max-w-2xl w-full p-4">
             <template v-if="!userDataSubmitted">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h2 class="text-2xl font-bold mb-6">Informations Personnelles</h2>
@@ -30,7 +30,7 @@
             </template>
 
             <template v-else>
-                <div class="bg-white p-6 rounded-lg shadow">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
                     <div class="mb-4">
                         <div class="text-sm text-gray-600">
                             Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}
@@ -42,16 +42,16 @@
                     </div>
 
                     <div v-if="currentQuestion" class="space-y-6">
-                        <h3 class="text-lg font-semibold">{{ currentQuestion.texte }}</h3>
-                        <div class="space-y-4">
-                            <label class="block p-3 border rounded hover:bg-gray-50 cursor-pointer">
-                                <input type="radio" v-model="currentAnswer" value="A" class="mr-2">
+                        <h3 class="text-2xl font-semibold mb-4">{{ currentQuestion.texte }}</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button @click="selectAnswer('A')"
+                                class="p-6 bg-blue-100 rounded-lg shadow hover:bg-blue-200 transition">
                                 {{ currentQuestion.optionA }}
-                            </label>
-                            <label class="block p-3 border rounded hover:bg-gray-50 cursor-pointer">
-                                <input type="radio" v-model="currentAnswer" value="B" class="mr-2">
+                            </button>
+                            <button @click="selectAnswer('B')"
+                                class="p-6 bg-green-100 rounded-lg shadow hover:bg-green-200 transition">
                                 {{ currentQuestion.optionB }}
-                            </label>
+                            </button>
                         </div>
 
                         <div class="flex justify-between mt-6">
@@ -95,6 +95,17 @@ const handleUserSubmit = () => {
     userDataSubmitted.value = true
 }
 
+const selectAnswer = (answer) => {
+    currentAnswer.value = answer
+    store.saveAnswer(currentQuestion.value.id, answer)
+    if (isLastQuestion.value) {
+        navigateTo('/results')
+    } else {
+        currentQuestionIndex.value++
+        currentAnswer.value = null
+    }
+}
+
 const nextQuestion = () => {
     if (currentAnswer.value) {
         store.saveAnswer(currentQuestion.value.id, currentAnswer.value)
@@ -112,5 +123,5 @@ const previousQuestion = () => {
         currentQuestionIndex.value--
         currentAnswer.value = store.answers[currentQuestion.value.id] || null
     }
-};
+}
 </script>
