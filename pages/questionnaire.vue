@@ -11,7 +11,7 @@
                         </p>
                     </div>
                     <br>
-                    <h2 class="sm:text-2xl text-3xl text-orange-500 drop-shadow-sm font-black">{{ currentQuestion.texte
+                    <h2 class="text-3xl text-orange-500 drop-shadow-sm font-black">{{ currentQuestion.texte
                         }}</h2>
                 </div>
             </div>
