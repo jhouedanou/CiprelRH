@@ -1,6 +1,30 @@
 <template>
-    <div class="w-full h-screen flex items-center justify-center bg-gray-100">
-        <div class="max-w-2xl w-full p-4">
+    <div class="w-full h-screen flex items-center justify-center">
+        <!-- Header simplifié -->
+        <nav v-if="userDataSubmitted" class="fixed top-0 left-0 right-0 bg-white shadow p-4 z-50">
+            <div class="container mx-auto flex items-center justify-between">
+                <!-- Logo et énoncé -->
+                <div class="flex items-center space-x-4">
+                    <!-- <nuxt-link to="/" class="text-orange-600 font-bold text-lg">
+                        <img src="/images/logo.webp" alt="Logo" class="h-12" />
+                    </nuxt-link> -->
+                    <div class="text-sm font-semibold">
+                        <p class="bg-orange-600 text-white rounded-full px-2 py-1">
+                            Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}
+                        </p>
+                    </div>
+                    <br>
+                    <h2 class="text-2xl text-orange-500 drop-shadow-sm font-black">{{ currentQuestion.texte
+                        }}</h2>
+                </div>
+
+                <!-- Compteur -->
+
+            </div>
+        </nav>
+
+
+        <div id="red" class="p-0">
             <template v-if="!userDataSubmitted">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h2 class="text-2xl font-bold mb-6">Informations Personnelles</h2>
@@ -30,40 +54,25 @@
             </template>
 
             <template v-else>
-                <div class="bg-white p-6 rounded-lg shadow text-center">
-                    <div class="mb-4">
-                        <div class="text-sm text-gray-600">
-                            Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="bg-orange-500 h-2 rounded-full"
-                                :style="{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }"></div>
-                        </div>
-                    </div>
-
-                    <div v-if="currentQuestion" class="space-y-6">
-                        <h3 class="text-2xl font-semibold mb-4">{{ currentQuestion.texte }}</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button @click="selectAnswer('A')"
-                                class="p-6 bg-blue-100 rounded-lg shadow hover:bg-blue-200 transition">
+                <div class="h-screen flex flex-col">
+                    <div id="sabidi" class="flex-1 grid grid-cols-2 gap-2 p-2">
+                        <button @click="selectAnswer('A')"
+                            class="w-full h-full rounded-lg shadow hover:opacity-90 transition relative overflow-hidden"
+                            :style="{ backgroundImage: `url(${currentQuestion.imageA})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
+                            <p
+                                class="absolute inset-0 flex items-center justify-center bg-orange-500 bg-opacity-60 rounded drop-shadow-md text-white text-2xl font-black p-2">
                                 {{ currentQuestion.optionA }}
-                            </button>
-                            <button @click="selectAnswer('B')"
-                                class="p-6 bg-green-100 rounded-lg shadow hover:bg-green-200 transition">
-                                {{ currentQuestion.optionB }}
-                            </button>
-                        </div>
+                            </p>
+                        </button>
 
-                        <div class="flex justify-between mt-6">
-                            <button @click="previousQuestion" :disabled="currentQuestionIndex === 0"
-                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
-                                Précédent
-                            </button>
-                            <button @click="nextQuestion" :disabled="!currentAnswer"
-                                class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
-                                {{ isLastQuestion ? 'Terminer' : 'Suivant' }}
-                            </button>
-                        </div>
+                        <button @click="selectAnswer('B')"
+                            class="w-full h-full rounded-lg shadow hover:opacity-90 transition relative overflow-hidden"
+                            :style="{ backgroundImage: `url(${currentQuestion.imageB})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
+                            <p
+                                class="absolute inset-0 flex items-center justify-center bg-lime-800 bg-opacity-60 rounded drop-shadow-md text-white text-2xl font-black p-2">
+                                {{ currentQuestion.optionB }}
+                            </p>
+                        </button>
                     </div>
                 </div>
             </template>
@@ -102,26 +111,18 @@ const selectAnswer = (answer) => {
         navigateTo('/results')
     } else {
         currentQuestionIndex.value++
-        currentAnswer.value = null
     }
-}
-
-const nextQuestion = () => {
-    if (currentAnswer.value) {
-        store.saveAnswer(currentQuestion.value.id, currentAnswer.value)
-        if (isLastQuestion.value) {
-            navigateTo('/results')
-        } else {
-            currentQuestionIndex.value++
-            currentAnswer.value = null
-        }
-    }
-}
-
-const previousQuestion = () => {
-    if (currentQuestionIndex.value > 0) {
-        currentQuestionIndex.value--
-        currentAnswer.value = store.answers[currentQuestion.value.id] || null
-    }
-}
+};
+// Add navigation guard
+// onMounted(() => {
+//     if (!store.userData) {
+//         navigateTo('/')
+//     }
+// })
 </script>
+
+<style>
+.mouff {
+    height: 100vh;
+}
+</style>

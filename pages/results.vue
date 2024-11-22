@@ -2,8 +2,6 @@
     <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
             <div id="capture-zone" class="bg-white rounded-2xl shadow-xl p-8">
-                <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Résultats de votre évaluation</h2>
-
                 <div v-if="results" class="space-y-8">
                     <div class="bg-orange-50 rounded-xl p-6 border border-orange-100">
                         <h3 class="text-xl font-semibold text-orange-900 mb-3">Département recommandé</h3>
