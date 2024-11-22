@@ -6,13 +6,21 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.scss'
   ],
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vite-pwa/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@vite-pwa/nuxt',
+    '@nuxt/image', // Ajoutez-le ici car il est dans vos dépendances
+  ],
  
   nitro: {
     preset: 'vercel',
     prerender: {
       failOnError: false
     }
+  },
+  build: {
+    transpile: ['vue-bundle-renderer']
   },
   ssr: false,
   image: {
