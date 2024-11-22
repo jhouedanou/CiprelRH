@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vue-bundle-renderer']
   },
-  ssr: false,
+  ssr: true,
   image: {
     quality: 80,
     format: ['webp', 'jpg']
