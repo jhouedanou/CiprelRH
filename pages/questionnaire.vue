@@ -6,8 +6,8 @@
                 <!-- Logo et énoncé -->
                 <div class="flex items-center space-x-4">
                     <div class="text-sm font-semibold">
-                        <p class="bg-orange-600 text-white rounded-full px-2 py-1">
-                            Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}
+                        <p class="bg-orange-600 text-white rounded-full px-2 py-1">{{ currentQuestionIndex + 1 }}/{{
+                            questions.length }}
                         </p>
                     </div>
                     <br>
