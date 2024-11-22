@@ -6,12 +6,15 @@
                 <!-- Logo et énoncé -->
                 <div class="flex items-center space-x-4">
                     <div class="text-sm font-semibold">
-                        <p class="bg-orange-600 text-white rounded-full px-2 py-1">{{ currentQuestionIndex + 1 }}/{{
-                            questions.length }}
+                        <p class="bg-orange-600 text-white rounded-full px-2 py-1 sm:text-1xl md:text-3xl">{{
+                            currentQuestionIndex + 1
+                        }}/{{
+                                questions.length }}
                         </p>
                     </div>
                     <br>
-                    <h2 class="text-3xl text-orange-500 drop-shadow-sm font-black">{{ currentQuestion.texte
+                    <h2 class="sm:text-2xl md:text-4xl text-orange-500 drop-shadow-sm font-black">{{
+                        currentQuestion.texte
                         }}</h2>
                 </div>
             </div>
