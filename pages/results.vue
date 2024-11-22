@@ -98,15 +98,8 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-10 text-center">
-                    <!-- <NuxtLink to="/"
-                        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
-                        Retour à l'accueil
-                    </NuxtLink> -->
-                    <!-- <button @click="downloadResults"
-                        class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors">
-                        Télécharger CSV
-                    </button> -->
                     <button @click="shareScreenshot"
                         class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
                         Partager mon évaluation
@@ -115,10 +108,9 @@
                         class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
                         Télécharger mon évaluation
                     </button>
-
                     <button @click="retournerAccueil"
                         class="ml-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors m-4">
-                        cliquez ici pour retourner à l'accueil
+                        Retourner à l'accueil
                     </button>
                 </div>
             </div>
@@ -127,18 +119,33 @@
 </template>
 
 <script setup>
-
-import { useQuestionnaireStore } from '~/stores/questionnaire'
-import html2canvas from 'html2canvas'
-
 const store = useQuestionnaireStore()
 const results = computed(() => store.calculateResults())
-const maxScore = 10
+const { saveResults } = useSupabase()
+
+const saveToSupabase = async () => {
+    const resultData = {
+        date: new Date().toISOString(),
+        userData: store.userData,
+        answers: store.answers,
+        scores: results.value.scores,
+        departement: results.value.departement,
+        softSkills: results.value.softSkillsTriees
+    }
+
+    try {
+        const { data, error } = await saveResults(resultData)
+        if (error) throw error
+    } catch (error) {
+        console.error('Erreur Supabase:', error)
+    }
+}
 const retournerAccueil = () => {
     navigateTo('/')
     store.resetQuestionnaire()
     store.resetResults()
 }
+
 const captureScreen = async () => {
     const element = document.getElementById('capture-zone')
     if (element) {
@@ -181,26 +188,17 @@ const shareScreenshot = async () => {
         }, 'image/png')
     }
 }
-const formatSkill = (skill) => {
-    return skill.replace(/([A-Z])/g, ' $1')
-        .replace(/^./, str => str.toUpperCase())
-};
 
-// Sauvegarder les résultats dès l'affichage
 onMounted(async () => {
+    if (!store.results) {
+        navigateTo('/')
+        return
+    }
+
     try {
-        await store.saveResults()
+        await saveToSupabase()
     } catch (error) {
         console.error('Erreur de sauvegarde:', error)
     }
-})
-
-const downloadResults = () => {
-    const link = document.createElement('a')
-    link.href = '/data/results.csv'
-    link.download = 'resultats_ciprelrh.csv'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-}
+});
 </script>

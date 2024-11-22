@@ -1,14 +1,13 @@
 export default defineNuxtConfig({
+
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
+  
+  devtools: { enabled:true},
   css: [
     '@/assets/css/main.scss'
   ],
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@vite-pwa/nuxt'
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vite-pwa/nuxt'],
+ 
   nitro: {
     preset: 'vercel',
     prerender: {

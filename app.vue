@@ -6,8 +6,9 @@
     </main>
   </div>
 </template>
-<script>
+<script setup>
 import { useHead } from '#app';
+const config = useRuntimeConfig()
 
 useHead({
   title: 'CiprelRH',
@@ -20,4 +21,6 @@ useHead({
     { rel: 'icon', type: 'image/png', href: '/icons/ios/192.png' }
   ]
 });
+
+
 </script>
